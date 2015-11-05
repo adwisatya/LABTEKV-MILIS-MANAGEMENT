@@ -53,4 +53,5 @@ class Crawler extends MY_Controller{
     //     $array_mhs = array("13512043","13512100","13512003");
     //     $this->Crawler_Model->dump_to_file("2015","II","IF4050","aryya dwisatya w",$array_mhs);
     // }
+
 }
