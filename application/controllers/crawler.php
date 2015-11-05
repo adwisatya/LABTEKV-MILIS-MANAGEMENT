@@ -49,8 +49,8 @@ class Crawler extends MY_Controller{
     public function list_mahasiswa(){
         $this->Crawler_Model->list_mahasiswa();
     }
-    public function dump_to_file(){
-        $array_mhs = array("13512043","13512100","13512003");
-        $this->Crawler_Model->dump_to_file("2015","II","IF4050","aryya dwisatya w",$array_mhs);
-    }
+    // public function dump_to_file(){
+    //     $array_mhs = array("13512043","13512100","13512003");
+    //     $this->Crawler_Model->dump_to_file("2015","II","IF4050","aryya dwisatya w",$array_mhs);
+    // }
 }
