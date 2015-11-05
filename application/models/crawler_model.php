@@ -54,7 +54,26 @@ class Crawler_Model extends CI_Model{
             $i++;
         }
         $result['peserta'] = $mahasiswa;
-        return $result;
+        print_r($mahasiswa);
+        //return $result;
+        return $this->dump_to_file($result['tahun'],$result['semester'],$result['kode'],$result['dosen'],$mahasiswa['nim']);
+    }
+    public function dump_to_file($tahun,$semester,$kode_kuliah,$dosen,$list_mahasiswa){
+        try{
+            $file = "application/files/".$tahun."-".$semester."-".$kode_kuliah.".txt";
+            if(fopen($file,"r")){
+                unlink($file);
+            }
+            $wfile = fopen($file,"a");
+            fwrite($wfile,$dosen."\n");
+            foreach($list_mahasiswa as $mahasiswa){
+                fwrite($wfile, $mahasiswa."@std.stei.itb.ac.id\n");
+            }
+            fclose($wfile);
+            return true;
+        }catch(Exception  $e){
+            return false;
+        }
     }
     public function crawl_list_mk_prodi($kode_prodi,$kode_mk,$kelas){
         $url = $this->base_url."daftarkelas.php?ps=".$kode_prodi."&semester=1&tahun=2015&th_kur=2013";
